@@ -1,5 +1,5 @@
 from superheroes import *
-from Escenario_elegido import *
+from Escenarios import *
 
 def main():
     escenario = list()
