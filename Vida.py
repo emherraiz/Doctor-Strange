@@ -9,7 +9,7 @@ class Vida():
 
     # Devuelve True si el personaje esta muerto
     def is_muerto(self):
-        return not self._vida > 0
+        return self._vida <= 0
 
     # En caso de que este muerto el presonaje se queda con 0 de vida
     def muerto(self):
