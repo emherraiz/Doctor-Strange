@@ -2,6 +2,7 @@ from Escenarios import *
 import random
 from enum import Enum
 from Vida import Vida
+from Tipo_de_superheroe import Tipo_de_superheroe
 
 class Superheroe(Vida):
     indice = 0
@@ -20,7 +21,8 @@ class Superheroe(Vida):
         self.__movimientos = []
 
         #tipos
-        if type(tipo) != Tipo_de_superheroe
+        if type(tipo) != Tipo_de_superheroe:
+            raise TypeError('Formato no válido')
         #
         self.__coste = (escenario.get_monedas() / escenario.get_n_miembros()) * (sum(self.__parrilla_de_poderes) / 30)
 
