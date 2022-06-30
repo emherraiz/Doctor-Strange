@@ -1,4 +1,4 @@
-from Escenarios import *
+from Clases.Escenarios import *
 import random
 from enum import Enum
 from Vida import Vida
@@ -44,7 +44,7 @@ class Superheroe(Vida):
         self._salud = (escenario.get_salud() * self.__stats[3])
 
 
-
+    # Gets como siempre
     def get_identificador(self):
         return self.__identificador
 
@@ -63,13 +63,17 @@ class Superheroe(Vida):
     def get_coste(self):
         return self.__coste
 
-    def set_movimientos(self, x):
-        for movimiento in x:
-            if movimiento.get_tipo().value: 
+    # Para fijarle los movimientos al superheroe
+    def set_movimientos(self, lista_de_movimientos):
+        for movimiento in lista_de_movimientos:
+            # El daño que vamos a asignar cambia dependiendo si es un ataque o una defensa
+            if movimiento.get_tipo().value:
                 movimiento.set_daño((movimiento.get_daño()/10)*(0.8*self.__stats[1] + 0.25*self.__stats[2] + 0.75*self.__stats[5] + self.__stats[4]))
-            else: 
+            else:
                 movimiento.set_daño((movimiento.get_daño()/10)*(self.__stats[0] + 0.75*self.__stats[2] + 0.25*self.__stats[5] + 0.2*self.__stats[1]))
             self.__movimientos.append(movimiento)
+
+    # Esto nos sirve para fijar la salud en cuestión del daño que haya recibido el personaje
     def defensa(self, daño):
         self._salud = self._salud - daño
         if self._salud <= 0:

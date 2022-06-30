@@ -1,27 +1,27 @@
-from Escenarios import *
+from Clases.Escenarios import *
 from Superheroes import *
 from Organizaciones import *
 
-
+# Lista con los nombres
 firstNames = {"A":"Captain", "B":"Turbo", "C":"Galactic", "D":"The", "E":"Aqua", "F":"Fire",
 "G":"Iron", "H":"Super", "I":"Green", "J":"Phantom", "K":"Dark", "L":"Ghost", "M":"Professor",
 "N":"Atomic", "O":"Rock", "P":"Omega", "Q":"Rocket", "R":"Shadow", "S":"Agent", "T":"Silver",
 "U":"Wild", "V":"Wolf", "W":"Ultra", "X":"Wonder", "Y":"Doctor", "Z":"Star"}
 
+# Lista con los apellidos
 lastNames = {"A":"X", "B":"Shield", "C":"Machine", "D":"Justice", "E":"Beast", "F":"Wing",
 "G":"Arrow", "H":"Skull","I":"Blade", "J":"Bolt", "K":"Cobra", "L":"Blaze",
 "M":"Soldier", "N":"Strike", "O":"Falcon", "P":"Fang", "Q":"King", "R":"Surfer",
 "S":"Bot", "T":"Guard", "U":"Thing", "V":"Claw", "W":"Brain", "X":"Master", "Y":"Power", "Z":"Storm"}
 
+# Esta función la pasaremos al main
 def lanzar():
 
-    #elegir escenario
+    # Elegir escenario
     escenario = input("Elija un escenario de entre los siguientes: sanctum_sanctorum/ stark_tower/ xavier_school: ")
-
     escenario = Escenario.from_str(escenario)
 
-    #crear superheroes
-
+    # Crear superheroes
     nombrelist = list(firstNames.values())
     apellidolist = list(lastNames.values())
     tipolist = ["HUMANO", "NOHUMANO"]
@@ -40,16 +40,14 @@ def lanzar():
         superlist.append(Superheroe(nombre, nombre, tipo, escenario))
         list_costes.append(superlist[i].get_coste())
 
-    # crear organizaciones
-
+    # Crear organizaciones
     nombre_org = ["A - Force", "Avengers", "Mercs for Money", "League of Realms", "Strange Academy", "X-Men"]
     organizaciones = []
     for i in range(0, len(nombre_org)):
         organizaciones.append(Organizacion(nombre_org[i], superlist[10*i:10*(i+1)]))
     organizaciones.append(Organizacion("Independientes", superlist[10*len(nombre_org):]))
 
-    # mostrar superheroes
-
+    # Mostrar superheroes
     print("Estos son los superheres a elegir y sus costes: ")
     for organizacion in organizaciones:
         print(organizacion.get_nombre() + ": ")

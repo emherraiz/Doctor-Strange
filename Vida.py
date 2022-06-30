@@ -17,7 +17,7 @@ class Vida():
 
     # Un get te permite implementar el valor de vida a una variable fuera de la clase
     def get_vida(self):
-        return self._salud
+        return self.Sal_salud
 
     # Con un set podemos ir cambiando el valor que le pasamos inicialmente al constructor
     def set_vida(self, x):
