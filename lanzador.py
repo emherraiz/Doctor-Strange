@@ -82,7 +82,7 @@ def lanzar():
         for superheroe in sup_jug:
             print(str(
                 superheroe.get_identificador()) + ". Alias: " + superheroe.get_alias() + ", Tipo:" + superheroe.get_tipo().name + ", Coste:" + str(
-                superheroe.get_coste()) + ", Energia:" + str(superheroe.get_energia()) + "\n")
+                superheroe.get_coste()) + ", Energia:" + str(superheroe.get_vida()) + "\n")
 
         sup_jug = []
 
@@ -101,9 +101,9 @@ def lanzar():
 
     for i in range(0,2):
         for superheroe in listsup_elejidos[i]:
-            list_mov = [int(x) for x in input("Los movimientos son: [0. puñetazo| 1. navajazo| 2. escudo| 3. abrazo del oso]. Elija " + str(escenario.get_movimientos()) + " movimientos, en base a su ID y separados por comas, para el superheroe " + superheroe.get_alias() + " ").split(",")]
-            # list_mov = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] -> codigo de prueba 
-            list_mov_esp = [Movimientos_Especifico(mov_list[list_mov[i]].get_nombre(), mov_list[list_mov[i]].get_tipo(), mov_list[list_mov[i]].get_daño(), superheroe) for i in range(0, min(escenario.get_movimientos(), len(list_mov)))]
+            list_mov = [int(x) for x in input("Los movimientos son: [0. puñetazo| 1. navajazo| 2. escudo| 3. abrazo del oso]. \nElija " + str(escenario.get_n_movimientos()) + " movimientos, en base a su ID y separados por comas, para el superheroe " + superheroe.get_alias() + ": ").split(",")]
+            # list_mov = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] -> codigo de prueba
+            list_mov_esp = [Movimientos_Especifico(mov_list[list_mov[i]].get_nombre(), mov_list[list_mov[i]].get_tipo(), mov_list[list_mov[i]].get_daño(), superheroe) for i in range(0, min(escenario.get_n_movimientos(), len(list_mov)))]
             superheroe.set_movimientos(list_mov_esp)
             for mov in list_mov_esp:
                 print(mov.get_nombre() + " " + mov.get_tipo().name + " daño: " + str(mov.get_daño()) + "\n")
@@ -117,17 +117,17 @@ def lanzar():
         for i in range(0,len(list_campobatalla)):
             if not list_campobatalla[i] or not list_campobatalla[i].is_vivo():
                 print("Jugador " + str(i+1) + " su superheroe ha sido derrotado, estos son los que le quedan")
-                undefeated = list_organizaciones[i].get_super_undefeated()
+                undefeated = list_organizaciones[i].get_superheroes_undefeated()
                 for j in range(0, len(undefeated)):
                     print(str(j) + ". Alias: " + undefeated[j].get_alias() + "\n")
                 suplente_sup = int(input("Elija un nuevo superheroe: "))
                 list_campobatalla[i] = undefeated[suplente_sup]
 
         while list_campobatalla[0].is_vivo() and list_campobatalla[1].is_vivo():
-            list_campobatalla[0].fight_attack(list_campobatalla[1], movement)
-            list_campobatalla[1].fight_attack(list_campobatalla[0], movement)
-            movement = 0 if movement == escenario.get_movimientos() - 1 else movement + 1
-            print("Esta es la energia del jugador 1: "+str(list_campobatalla[0].get_energia())+ " y esta la del jugador 2: "+str(list_campobatalla[1].get_energia()))
+            list_campobatalla[0].ataque(list_campobatalla[1], movement)
+            list_campobatalla[1].ataque(list_campobatalla[0], movement)
+            movement = 0 if movement == escenario.get_n_movimientos() - 1 else movement + 1
+            print("Esta es la energia del jugador 1: "+str(round(list_campobatalla[0].get_vida()), 2)+ " y esta la del jugador 2: "+str(round(list_campobatalla[1].get_vida(), 2)))
 
     if list_organizaciones[0].is_undefeated():
         print("¡Ha ganado el jugador 1!")
@@ -137,5 +137,3 @@ def lanzar():
 
     else:
         print("Ha habido un empate")
-
-lanzar()
