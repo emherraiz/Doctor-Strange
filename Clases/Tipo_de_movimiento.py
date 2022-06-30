@@ -1,5 +1,5 @@
 from Clases.movimientos_base import Movimiento_Type
-from Movimientos_general import Movimientos_General
+from Clases.Movimientos_general import Movimientos_General
 
 # Heredamos de movimientos el constructor, ya que el movimiento específico también tiene estos atributos
 class Movimientos_Especifico(Movimientos_General):
