@@ -1,5 +1,5 @@
 # En esta opción disponemos de tres escenarios que no se pueden cambiar
-from Escenarios_disponibles import *
+from Clases.Escenarios_disponibles import *
 
 class Escenario():
 
