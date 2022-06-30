@@ -1,12 +1,3 @@
-from superheroes import *
-from Escenarios import *
-
-def main():
-    escenario = list()
-    for i
-
-
-
-
+from lanzador import *
 if __name__ == "__main__":
-    main()
+    lanzar()

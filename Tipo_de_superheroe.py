@@ -1,4 +1,6 @@
 from enum import Enum
 class Tipo_de_superheroe(Enum):
-    Humano = True
-    Nohumano = False
+    Humano = 1
+    Nohumano = 0
+
+    def from_index()
