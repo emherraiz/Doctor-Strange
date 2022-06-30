@@ -127,7 +127,7 @@ def lanzar():
             list_campobatalla[0].ataque(list_campobatalla[1], movement)
             list_campobatalla[1].ataque(list_campobatalla[0], movement)
             movement = 0 if movement == escenario.get_n_movimientos() - 1 else movement + 1
-            print("Esta es la energia del jugador 1: "+str(round(list_campobatalla[0].get_vida()), 2)+ " y esta la del jugador 2: "+str(round(list_campobatalla[1].get_vida(), 2)))
+            print("Esta es la energia del jugador 1: "+str(round(list_campobatalla[0].get_vida(), 2))+ " y esta la del jugador 2: "+str(round(list_campobatalla[1].get_vida(), 2)))
 
     if list_organizaciones[0].is_undefeated():
         print("¡Ha ganado el jugador 1!")
