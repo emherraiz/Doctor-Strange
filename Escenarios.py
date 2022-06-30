@@ -49,4 +49,3 @@ class Escenario():
             raise TypeError("No se ha introducido bien el nombre de ningún escenario")
 
         return escenario_elegido
-

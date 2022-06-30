@@ -63,14 +63,13 @@ class Superheroe(Vida):
     def get_coste(self):
         return self.__coste
 
-    def set_movimientos(self, lista_movimientos):
-        for movimiento in lista_movimientos:
-            if movimiento.get_tipo().value:
+    def set_movimientos(self, x):
+        for movimiento in x:
+            if movimiento.get_tipo().value: 
                 movimiento.set_daño((movimiento.get_daño()/10)*(0.8*self.__stats[1] + 0.25*self.__stats[2] + 0.75*self.__stats[5] + self.__stats[4]))
-            else:
-                movimiento.get_daño((movimiento.get_daño()/10)*(self.__stats[0] + 0.75*self.__stats[2] + 0.25*self.__stats[5] + 0.2*self.__stats[1]))
+            else: 
+                movimiento.set_daño((movimiento.get_daño()/10)*(self.__stats[0] + 0.75*self.__stats[2] + 0.25*self.__stats[5] + 0.2*self.__stats[1]))
             self.__movimientos.append(movimiento)
-
     def defensa(self, daño):
         self._salud = self._salud - daño
         if self._salud <= 0:

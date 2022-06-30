@@ -9,7 +9,10 @@ class Organizacion():
         if len(superheroes) == 0:
             raise ValueError('No se ha introducido ningún superheroe en la organización')
 
+        # Nombre de la organización
         self.__nombre = nombre
+
+        # Una lista con todos los superheroes que pertenecen a dicha organización
         self.__superheroes = superheroes
 
 
@@ -62,14 +65,15 @@ class Organizacion():
     # Esta lista te devuelve True si quedan superheroes vivos
     def is_undefeated(self):
         # Suponemos que estan todos muertos e iteraremos la lista de superheroes comprobandolo, en caso de que haya alguno vivo, esta variable cambia su valor
-        todos_muertos = True
-        for superheroe in self.__superheroes:
+        equipo_con_vida = False
+        for i in range(len(self.__superheroes)):
             # Booleano que nos devuelve si la vida del personaje es mayor que 0
-            if superheroe.isvivo() and todos_muertos:
-                todos_muertos = False
+            if self.__superheroes[i].is_vivo():
+                equipo_con_vida = True
+                break
 
         # Si no estan todos muertos devolvemos un True y el juego continua
-        return not todos_muertos
+        return equipo_con_vida
 
     # Devuelve una lista de todos los superheroes vivos (por defecto) o todos los muertos, según elijas
     def get_superheroes_undefeated(self, devolver_vivos = True):
@@ -105,5 +109,5 @@ class Organizacion():
     def __repr__(self):
         texto_salida = ''
         for superheroe in self.__superheroes:
-            texto_salida += superheroe.get_identificador() + '\n\t' + superheroe.get_alias() + '\n\t'
+            texto_salida += superheroe.get_identificador() + "\t" + superheroe.get_tipo() + "\t" + superheroe.get_movimientos() + "\n"
 
