@@ -1,7 +1,7 @@
 # En esta opción disponemos de tres escenarios que no se pueden cambiar
 from Escenarios_disponibles import *
 
-class Escenarios():
+class Escenario():
 
     # En un momento inicial el constructor estará vacío pero más adelante mediante el método from_str(),
     # generamos una nueva instancia en la que le daremos valores a todas variables del constructor con las propiedades del escenario elegido
