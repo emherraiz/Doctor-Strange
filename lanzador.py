@@ -1,6 +1,6 @@
 from Clases.Escenarios import *
-from Superheroes import *
-from Organizaciones import *
+from Clases.Superheroes import *
+from Clases.Organizaciones import *
 
 # Lista con los nombres
 firstNames = {"A":"Captain", "B":"Turbo", "C":"Galactic", "D":"The", "E":"Aqua", "F":"Fire",
