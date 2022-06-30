@@ -95,11 +95,9 @@ class Organizacion():
     # Str devuelve una versión fácil de usar el objeto
     def __str__(self):
         texto_salida = ''
-        i = 1
         for superheroe in self.__superheroes:
-            j = str(i) + ' - '
-            texto_salida += f'{j}{superheroe.get_alias().upper()}\n\t'
-            i += 1
+            texto_salida += f'\t{superheroe.get_identificador()} - {superheroe.get_alias().upper()}\n\t\tTipo: {superheroe.get_tipo().name}\n\t\tCoste: {superheroe.get_coste()}\n\t\tVida: {superheroe.get_vida()}\n\n'
+
 
         return texto_salida
 
